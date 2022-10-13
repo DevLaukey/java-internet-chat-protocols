@@ -1,6 +1,5 @@
 
 import static java.lang.System.in;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -53,7 +52,15 @@ public class Client {
             @Override
             public void run() {
                 String messageFromGroupChat;
-
+                if(scanner.hasNextLine()){
+                    try {
+                        while ((messageFromGroupChat = bufferedReader.readLine()) != null) {
+                            System.out.println(messageFromGroupChat);
+                        }
+                    } catch (IOException e) {
+                        closeEverything(socket, bufferedReader, bufferedWriter);
+                    }
+                }
                 while (socket.isConnected()) {
                     try {
                         messageFromGroupChat = bufferedReader.readLine();
