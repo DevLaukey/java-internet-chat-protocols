@@ -57,6 +57,7 @@ public class Client {
                 while (socket.isConnected()) {
                     try {
                         messageFromGroupChat = bufferedReader.readLine();
+
                         System.out.println(messageFromGroupChat);
                     } catch (IOException e) {
                         closeEverything(socket, bufferedReader, bufferedWriter);
